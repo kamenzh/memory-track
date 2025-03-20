@@ -46,7 +46,6 @@ router.post('/login', async(req, res) => {
             
             return res.redirect(`/user/${currentUser.id}?message=Login%20Successfull`);
         }
-        
         else{
             return res.redirect('/auth/login?message=Invalid%20password');
         }

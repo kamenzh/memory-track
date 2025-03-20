@@ -4,49 +4,59 @@
     <p><strong>Joined:</strong> <%= new Date(currentUser.createdAt).toLocaleDateString() %></p>
     <br>
 
+    <!--# Edit Button Toggle #-->
     <button type="button" id="editBtn" class="btn-accent" style="margin: 5px; color: white; border-color: white;">
         Edit
     </button>
     
+    
     <form action="/user/<%= currentUser.id %>?_method=PATCH" method="POST" id="editForm" style="display:none;">
         <div class="form-control">
-            <input class="form-control" value="<%= currentUser.username%>">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" value="<%= currentUser.username%>">
             <br>
             <br>
-            <input class="form-control" value="<%= currentUser.email%>">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" value="<%= currentUser.email%>">
             <br>
             <br>
-            <input class="form-control" value="<%= currentUser.displayName%>">
+            <label for="displayName">Display Name</label>
+            <input id="displayName" class="form-control" value="<%= currentUser.displayName%>">
             
             <br>
+            <div style="display: flex; justify-content: end; margin-right: -5px; margin-top: 5px;">
             <button type="button" id="closeBtn" class="btn-accent" style="margin: 5px; color: white; border-color: white;">
                 Cancel
             </button>
             <button type="submit" class="btn-accent" style="margin: 5px; color: white; border-color: white;">
                 Submit Changes
-            </button>
+            </button></div>
         </div>
     </form>
     
 
-
+    <!--#  Delete User #-->
     <form action="/user/<%=currentUser.id%>?_method=DELETE" method="POST">  <!--! Query for overriding !-->
-        <button type="submit" class="btn" style="margin: 5px; color: white;border-color: white; background-color: red; ">Delete</button>
+        <button id="delete" type="submit" class="btn" style="margin: 5px; color: white;border-color: white; background-color: red; ">Delete</button>
     </form>
+
 
     <script>
     const editBtn = document.getElementById('editBtn');
     const closeBtn = document.getElementById('closeBtn');
     const editForm = document.getElementById('editForm');
+    const delBtn = document.getElementById('delete');
 
     editBtn.addEventListener('click', () => {
         editForm.style.display = 'block';
         editBtn.style.display = 'none';
+        delBtn.style.margin = '10px';
     });
 
     closeBtn.addEventListener('click', () => {
         editForm.style.display = 'none';
         editBtn.style.display = 'inline-block';
+        delBtn.style.margin = '5px';
     });
     </script>
 </section>

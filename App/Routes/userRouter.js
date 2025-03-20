@@ -31,28 +31,32 @@ router.get('/:id', async(req, res) =>{
     } 
 });
 
-router.patch('/:id', async(req, res) =>{
+router.patch('/:id', async (req, res) => {
     try {
-        // Message managment
-        const {message} = req.query || null;
-
-        // Manage id param format 
         const id = parseInt(req.params.id);
-        if(isNaN(id)) return res.status(400).redirect('/?message=User%20doesnt%20exist');
+        if (isNaN(id)) return res.status(400).redirect('/?message=User%20doesnt%20exist');
 
-        // Verified user access only to his own account
         if (req.user.id !== id) {
             return res.status(403).redirect('/?message=You%20do%20not%20have%20access%20to%20this%20account');
         }
 
-        // Find User & Existence Check
-        const currentUser = await User.findOne({id: req.params.id});
-        if(!currentUser) return res.redirect('/?message=Invalid%20User');
-    
-        // const {}        
-    }catch (error) {
-        return res.status(500).json({ message: error.message}); // error handling 
-    } 
+        let currentUser = await User.findOne({ id });
+        if (!currentUser) return res.redirect('/?message=Invalid%20User');
+
+        const { username, displayName, email } = req.body;
+
+        // Safely update fields
+        const updateFields = {};
+        if (username) updateFields.username = username.trim();
+        if (displayName) updateFields.displayName = displayName.trim();
+        if (email) updateFields.email = email.trim().toLowerCase();
+
+        currentUser = await User.findOneAndUpdate({ id }, updateFields, { new: true });
+
+        res.redirect(`/user/${currentUser.id}?message=Update%20Successful`);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
 });
 
 
