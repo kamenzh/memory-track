@@ -1,0 +1,16 @@
+<nav>
+  <div class="container">
+    <a href="/" class="brand">Memory Track</a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+    <% if (locals.currentUser) { %>
+        <li><a href="/user/<%= currentUser.id %>">Profile</a></li>
+        <li><a href="/auth/logout">Log Out</a></li>
+    <% } else { %> 
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/signup">Sign Up</a></li>
+    <% } %>
+    </ul>
+  </div> 
+</nav>

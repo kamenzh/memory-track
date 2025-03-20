@@ -1,0 +1,9 @@
+<div class="hero">
+  <h1>Welcome to UserApp</h1>
+  <p>A simple application to manage user accounts</p>
+  <% if (locals.currentUser) { %>
+    <a href="/user/<%= currentUser.id %>" class="btn btn-accent"> Profile</a>
+<% } else { %> 
+  <a href="/auth/signup" class="btn btn-accent">Get Started</a>
+<% } %>
+</div>

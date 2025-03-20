@@ -1,0 +1,294 @@
+/* Basic Reset and Flex Layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Glassmorphism Variables */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.066);
+  --glass-border: rgba(255, 255, 255, 0.147);
+  --blur-amount: 7px;
+  --accent-color: #ff0000e9;
+  --text-color: #ffffff;
+}
+
+/* Three.js Background Container */
+#threejs-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Navbar - Glassmorphic */
+nav {
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent dark */
+  backdrop-filter: blur(3px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+}
+
+/* Glassmorphic Containers for Forms, Cards, Profiles */
+.glass,
+.form-container,
+.card,
+.user-profile {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-amount));
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto;
+  max-width: 500px;
+}
+
+/* For home page cards (user list) */
+.card {
+  max-width: 1200px;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Unified Button Styles for All Buttons */
+.btn,
+.btn-accent {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #00000029;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  color: var(--accent-color);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover,
+.btn-accent:hover {
+  background: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Form Inputs */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.1);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* User List on Home Page */
+.user-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.user-item {
+  background: rgba(18, 0, 0, 0.045);
+  backdrop-filter: blur(var(--blur-amount));
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.user-item:hover {
+  transform: translateY(-100px);
+}
+
+/* Footer - Sticky at Bottom */
+footer {
+  background: rgb(0, 0, 0);
+  padding: 1rem 2rem;
+  text-align: center;
+  color: var(--accent-color);
+  border-top: 1px solid var(--glass-border);
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+footer h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Flash/Error Message Popup */
+.error-message {
+  position: fixed;
+  top: 10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.147);
+  color: var(--accent-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: fadeInOut 4s ease-in-out forwards;
+}
+
+.error-message::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: shrinkBar 4s linear forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+@keyframes shrinkBar {
+  from { width: 100%; }
+  to { width: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Style for the login/signup links */
+.form-container p a {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: var(--accent-color);           /* Base blue color */
+  text-decoration: none;    /* Remove underline by default */
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.form-container p a:hover {
+  color: #8d5353;           /* Darker blue on hover */
+  text-decoration: underline;
+}
