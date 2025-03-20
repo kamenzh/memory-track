@@ -11,10 +11,11 @@ const JWT_SECRET = process.env.JWT_SECRET;
 // # Login Page
 router.get('/login', (req, res) => {
     // Message managment
-    const {message} = req.query || null;
-
+    const {message} = req.cookies || null;
+    res.clearCookie('message');
     // Render login and pass message
     res.render('login', {message: message});
+
 });
 
 // # Login Request
@@ -26,7 +27,10 @@ router.post('/login', async(req, res) => {
         
         // Find user and check for existence
         const currentUser = await User.findOne({username: username});
-        if(!currentUser) return res.redirect('/auth/login?message=Invalid%20User');
+        if(!currentUser) {
+            res.cookie('message', 'Invalid User', { maxAge: 6000, httpOnly: true }); 
+            return res.redirect('/auth/login');
+        }
     
         // Password Check 
         const isMatch = await bcrypt.compare(password, currentUser.password);
@@ -44,15 +48,18 @@ router.post('/login', async(req, res) => {
                 maxAge: 7200000, // 2 hour expiration
             });
             
-            return res.redirect(`/user/${currentUser.id}?message=Login%20Successfull`);
+            res.cookie('message', 'Login Successful', { maxAge: 6000, httpOnly: true }); 
+            return res.redirect(`/user/${currentUser.id}`);
         }
         
         else{
-            return res.redirect('/auth/login?message=Invalid%20password');
+            res.cookie('message', 'Invalid password', { maxAge: 6000, httpOnly: true });
+            return res.redirect('/auth/login');
         }
 
     } catch (error) {
-        return res.redirect(`/auth/login?message=${encodeURIComponent(error.message)}`);
+        res.cookie('message', (error.message), { maxAge: 6000, httpOnly: true }); 
+        return res.redirect('/auth/login');
     }
 });
 
@@ -61,7 +68,8 @@ router.post('/login', async(req, res) => {
 // # Signup Page 
 router.get('/signup', (req, res) => {
     // Message managment
-    const {message} = req.query || null;
+    const {message} = req.cookies || null;
+    res.clearCookie('message');
     res.render('signup', {message: message});
 });
 
@@ -76,8 +84,10 @@ router.post('/signup', async(req, res) => {
     
         // Existing user check 
         const existingUser = await User.findOne({$or: [{username}, {email}]});
-        if(existingUser) return res.redirect(`/auth/signup?message=User%20${encodeURIComponent(existingUser.username)}%20already%20exists`);
-    
+        if(existingUser) { res.cookie('message', `User ${existingUser.username} already exists`, { maxAge: 6000, httpOnly: true });
+        return res.redirect('/auth/signup');
+     }
+
         // Last Id check
         const lastUser = await User.findOne().sort({ id: -1 });
         const newId = lastUser ? lastUser.id + 1 : 1; // Increment ID
@@ -102,10 +112,12 @@ router.post('/signup', async(req, res) => {
         });
 
         // redirect to its user page
-        res.redirect(`/user/${currentUser.id}?message=Succesfuly%20Created%20An%20Account`);
+        res.cookie('message', 'Successfully Created An Account', { maxAge: 6000, httpOnly: true });
+        return res.redirect(`/user/${currentUser.id}`);
         
     } catch (error) {
-        return res.redirect(`/auth/signup?message=${encodeURIComponent(error.message)}`);
+        res.cookie('message', (error.message), { maxAge: 6000, httpOnly: true });
+        return res.redirect('/auth/signup');
     }
 });
 
@@ -113,7 +125,8 @@ router.post('/signup', async(req, res) => {
 // # Logout
 router.get('/logout',(req, res) => {
     res.clearCookie('jwt');
-    res.redirect('/?message=Logged%20out%20Successfuly');
+    res.cookie('message', 'Logged out Successfully', { maxAge: 6000, httpOnly: true });
+    res.redirect('/');
 });
 
 module.exports = router;
