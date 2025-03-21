@@ -104,7 +104,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-  text-align: center;
+  text-align: left;
   padding: 2rem 1rem;
 }
 
@@ -119,6 +119,20 @@ nav ul li a:hover {
   margin-bottom: 2rem;
 }
 
+.hero-overlay{
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(7px);
+  border-radius: 30px;
+  padding: 1.5rem;
+  border: 2px solid var(--glass-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto;
+  width: 450px;
+  height: 140%;
+  max-width: 60%;
+  text-align:center;
+
+}
 /* Unified Button Styles for All Buttons */
 .btn,
 .btn-accent {
