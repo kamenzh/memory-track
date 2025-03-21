@@ -37,7 +37,7 @@ const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 mars.position.y = -1;
 
-// Increase the strength of directional light on Mars significantly
+//a Increase the strength of directional light on Mars significantly
 const marsLight = new THREE.DirectionalLight(0xffffff, 1);
 marsLight.position.set(3, 3, 2);
 scene.add(marsLight);
