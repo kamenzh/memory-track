@@ -21,13 +21,13 @@ renderer.domElement.style.zIndex = '-1';
 
 // Load Mars texture from an online source
 const textureLoader = new THREE.TextureLoader();
-const marsTexture = textureLoader.load('https://t3.ftcdn.net/jpg/03/64/91/04/360_F_364910470_DCjyTv7AlFX0or7TGEcJWkz7JDLnCE5G.jpg', () => {
+const marsTexture = textureLoader.load('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv2vZwe5UJrgkP-2gUSv3gwzKorOQSqCabYqsJlEwPQXqyi71YxXlVRZe8HAfKIgMd9u0&usqp=CAU', () => {
     console.log('Mars texture loaded successfully');
 }, undefined, (err) => {
     console.error('Error loading Mars texture:', err);
 });
 //nfsdni
-const marsGeometry = new THREE.SphereGeometry(1.5, 64, 64);
+const marsGeometry = new THREE.SphereGeometry(1.2, 64, 64);
 const marsMaterial = new THREE.MeshStandardMaterial({ 
   map: marsTexture, 
   roughness: 0.8, 
@@ -35,15 +35,15 @@ const marsMaterial = new THREE.MeshStandardMaterial({
 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
-mars.position.y = -0.9;
+mars.position.y = -1;
 
 // Increase the strength of directional light on Mars significantly
-const marsLight = new THREE.DirectionalLight(0xffaa88, 1);
+const marsLight = new THREE.DirectionalLight(0xffffff, 1);
 marsLight.position.set(3, 3, 2);
 scene.add(marsLight);
 
 // Add a powerful spotlight to strongly illuminate Mars
-const spotLight = new THREE.SpotLight(0xff7733, 1, 10, Math.PI / 6, 0.5, 2);
+const spotLight = new THREE.SpotLight(0xffffff, 0.5, 1, Math.PI / 6, 0.5, 2);
 spotLight.position.set(3, 3, 2);
 spotLight.target = mars;
 scene.add(spotLight);
