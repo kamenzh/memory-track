@@ -26,7 +26,7 @@ const marsTexture = textureLoader.load('https://t3.ftcdn.net/jpg/03/64/91/04/360
 }, undefined, (err) => {
     console.error('Error loading Mars texture:', err);
 });
-
+//nfsdni
 const marsGeometry = new THREE.SphereGeometry(2, 32, 32);
 const marsMaterial = new THREE.MeshStandardMaterial({ 
   map: marsTexture, 
