@@ -22,7 +22,7 @@ main {
   --glass-bg: rgba(255, 255, 255, 0.066);
   --glass-border: rgba(255, 255, 255, 0.147);
   --blur-amount: 7px;
-  --accent-color: #449328e9;
+  --accent-color: #000000e9;
   --text-color: #000000;
 }
 
@@ -105,16 +105,17 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  font-family: Copperplate;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem;
 }
 
@@ -123,7 +124,7 @@ nav ul li a:hover {
 .btn-accent {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background: #00000029;
+  background: #b2afaf6c;
   border: 1px solid var(--accent-color);
   border-radius: 5px;
   color: var(--accent-color);
@@ -136,7 +137,7 @@ nav ul li a:hover {
 .btn:hover,
 .btn-accent:hover {
   background: var(--accent-color);
-  color: var(--text-color);
+  color: white;
 }
 
 /* Form Inputs */
@@ -193,7 +194,7 @@ nav ul li a:hover {
 
 /* Footer - Sticky at Bottom */
 footer {
-  background: #2f611d;
+  background: #141614;
   padding: 0.3rem 2rem;  /* Reduced padding from 0.6rem to 0.3rem */
   text-align: center;
   color: white;
