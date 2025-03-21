@@ -17,7 +17,7 @@ main {
   flex: 1;
 }
 
-/* Glassmorphism Variables */
+/* Glassmorphism Variodzuiables */
 :root {
   --glass-bg: rgba(255, 255, 255, 0.066);
   --glass-border: rgba(255, 255, 255, 0.147);
