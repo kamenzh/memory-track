@@ -38,10 +38,12 @@ main {
 
 /* Navbar - Glassmorphic */
 nav {
+  backdrop-filter: blur(20px) saturate(70%);
+  -webkit-backdrop-filter: blur(20px) saturate(70%);
+  background-color: rgba(17, 25, 40, 0.8);
   background: rgba(255, 255, 255, 0.285); /* semi-transparent dark */
-  backdrop-filter: blur(7px);
   border-bottom: 1px solid var(--glass-border);
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   position: relative;
   z-index: 10;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
