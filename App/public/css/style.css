@@ -194,28 +194,29 @@ nav ul li a:hover {
 /* Footer - Sticky at Bottom */
 footer {
   background: #2f611d;
-  padding: 1rem 2rem;
+  padding: 0.3rem 2rem;  /* Reduced padding from 0.6rem to 0.3rem */
   text-align: center;
-  
   color: white;
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--glass-border);
 }
 
+footer h3 {
+  margin-bottom: 0.9rem;  /* Reduced space for the header */
+}
+
 footer .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-footer h3 {
-  margin-bottom: 1rem;
+  padding: 0 0.1rem;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  font-size:larger;
+
 }
 
 .footer-links a {
@@ -228,74 +229,7 @@ footer h3 {
 }
 
 .copyright {
-  margin-top: 1rem;
+  margin-top: 1rem;  /* Reduced space for copyright text */
   font-size: 0.9rem;
   opacity: 0.8;
 }
-
-/* Flash/Error Message Popup */
-.error-message {
-  position: fixed;
-  top: 10px; 
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.147);
-  color: var(--accent-color);
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  animation: fadeInOut 4s ease-in-out forwards;
-}
-
-.error-message::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 4px;
-
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  animation: shrinkBar 4s linear forwards;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-}
-
-@keyframes shrinkBar {
-  from { width: 100%; }
-  to { width: 0; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav .container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-/* Style for the login/signup links */
-.form-container p a {
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  color: var(--accent-color);           /* Base blue color */
-  text-decoration: none;    /* Remove underline by default */
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.form-container p a:hover {
-  color: #8d5353;           /* Darker blue on hover */
-  text-decoration: underline;
-}
-
-
