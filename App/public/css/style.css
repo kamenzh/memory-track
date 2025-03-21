@@ -22,8 +22,8 @@ main {
   --glass-bg: rgba(255, 255, 255, 0.066);
   --glass-border: rgba(255, 255, 255, 0.147);
   --blur-amount: 7px;
-  --accent-color: #ff0000e9;
-  --text-color: #ffffff;
+  --accent-color: #449328e9;
+  --text-color: #000000;
 }
 
 /* Three.js Background Container */
@@ -38,12 +38,13 @@ main {
 
 /* Navbar - Glassmorphic */
 nav {
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent dark */
-  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.285); /* semi-transparent dark */
+  backdrop-filter: blur(7px);
   border-bottom: 1px solid var(--glass-border);
   padding: 1rem 2rem;
   position: relative;
   z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav .container {
@@ -190,10 +191,12 @@ nav ul li a:hover {
 
 /* Footer - Sticky at Bottom */
 footer {
-  background: rgb(0, 0, 0);
+  background: #2f611d;
   padding: 1rem 2rem;
   text-align: center;
-  color: var(--accent-color);
+  
+  color: white;
+  backdrop-filter: blur(10px);
   border-top: 1px solid var(--glass-border);
 }
 
@@ -214,7 +217,7 @@ footer h3 {
 }
 
 .footer-links a {
-  color: var(--accent-color);
+  color: white;
   text-decoration: none;
 }
 
@@ -292,3 +295,5 @@ footer h3 {
   color: #8d5353;           /* Darker blue on hover */
   text-decoration: underline;
 }
+
+
