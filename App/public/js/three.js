@@ -27,7 +27,7 @@ const marsTexture = textureLoader.load('https://t3.ftcdn.net/jpg/03/64/91/04/360
     console.error('Error loading Mars texture:', err);
 });
 //nfsdni
-const marsGeometry = new THREE.SphereGeometry(2, 32, 32);
+const marsGeometry = new THREE.SphereGeometry(1.5, 64, 64);
 const marsMaterial = new THREE.MeshStandardMaterial({ 
   map: marsTexture, 
   roughness: 0.8, 
@@ -35,6 +35,7 @@ const marsMaterial = new THREE.MeshStandardMaterial({
 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
+mars.position.y = -0.9;
 
 // Increase the strength of directional light on Mars significantly
 const marsLight = new THREE.DirectionalLight(0xffaa88, 1);

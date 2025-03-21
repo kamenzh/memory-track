@@ -195,7 +195,7 @@ nav ul li a:hover {
 /* Footer - Sticky at Bottom */
 footer {
   background: #141614;
-  padding: 0.3rem 2rem;  /* Reduced padding from 0.6rem to 0.3rem */
+  padding: 0.2rem 2rem;  /* Reduced padding from 0.6rem to 0.3rem */
   text-align: center;
   color: white;
   backdrop-filter: blur(10px);
