@@ -43,7 +43,7 @@ marsLight.position.set(3, 3, 2);
 scene.add(marsLight);
 
 // Add a powerful spotlight to strongly illuminate Mars
-const spotLight = new THREE.SpotLight(0xffffff, 0.5, 1, Math.PI / 6, 0.5, 2);
+const spotLight = new THREE.SpotLight(0xffffff, 1, 1, Math.PI / 6, 0.5, 2);
 spotLight.position.set(3, 3, 2);
 spotLight.target = mars;
 scene.add(spotLight);
